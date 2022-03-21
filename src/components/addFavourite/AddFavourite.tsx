@@ -1,4 +1,4 @@
-const AddFavourite = ({ onFavouriteClick }) => {
+const AddFavourite = ({ onFavouriteClick }:any) => {
 	return (
 		<div onClick={ onFavouriteClick }>
 			<span className='mr-2'>Add to Favourites</span>

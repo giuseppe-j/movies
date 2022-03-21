@@ -2,11 +2,11 @@ import './movieList.css'
 import AddFavourite from '../addFavourite/AddFavourite';
 import RemoveFavourite from '../removeFavourite/RemoveFavourite';
 
-const MoviesList = (props) => {
+const MoviesList = (props:any) => {
     return (
     <div className="scrolling-wrapper">
         { 
-        props.movies && props.movies.map((movie, index) => {
+        props.movies && props.movies.map((movie:any, index:any) => {
             return (
                 <div key={index} className="card">
                     <img src={movie.Poster} alt={movie.Title}></img>

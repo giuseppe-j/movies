@@ -3,10 +3,10 @@ import { FetchContext } from '../../context/context';
 import useLazySearch from '../useLazySearch';
 
 
-const SearchBox = ({setSearchValue}) => {
+const SearchBox = ({setSearchValue}:any) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [debouncedTerm] = useLazySearch(searchTerm, 1000);
-    const context = useContext(FetchContext);
+    const context:any = useContext(FetchContext);
 
     useEffect(() => {
         setSearchValue(debouncedTerm);

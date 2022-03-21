@@ -8,14 +8,14 @@ import { FetchContext } from "./context/context";
 import { fetchData, fetchDataFromLocalStorage, saveToLocalStorage } from "./shared";
 
 const App = () => {
-  const [searchValue, setSearchValue] = useState('');
-  const [favourites, setFavourites] = useState([]);
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [favourites, setFavourites] = useState<any[]>([]);
 
-  const context = useContext(FetchContext);
+  const context:any = useContext(FetchContext);
   const movies = context.state.movies;
 
   useEffect(() => {
-    const fetch = async (searchValue) => {
+    const fetch = async (searchValue:string) => {
       const json = await fetchData(searchValue).catch(console.error);
       if (json.Search) {
         context.dispatch({
@@ -36,14 +36,18 @@ const App = () => {
     fetchFromLocalStorage();
   }, [])
 
-  const addFavouriteMovie = (movie) => {
-    const newFavourites = favourites.filter((fav) => fav.imdbID === movie.imdbID).length ? favourites : [...favourites, movie];
-    setFavourites(newFavourites);
-    saveToLocalStorage(newFavourites);
+  const addFavouriteMovie = (movie:any) => {
+    // const newFavourites = favourites.filter((favourite:any) => favourite.imdbID === movie.imdbID);
+    const hasMovie = favourites.filter((fav:any) => fav.imdbID === movie.imdbID).length;
+    if (!hasMovie) {
+      const newFavourites = [...favourites, movie];
+      setFavourites(newFavourites);
+      saveToLocalStorage(newFavourites);
+    }
   }
   
-  const removeFavouriteMovie = (movie) => {
-    const newFavourites = favourites.filter((favourite) => favourite.imdbID !== movie.imdbID);
+  const removeFavouriteMovie = (movie:any) => {
+    const newFavourites = favourites.filter((favourite:any) => favourite.imdbID !== movie.imdbID);
     setFavourites(newFavourites);
     saveToLocalStorage(newFavourites);
   }
@@ -52,7 +56,7 @@ const App = () => {
     <div className={`container-fluid movies`}>
       <div className='row d-flex align-items-center mt-4 mb-4'>
 				<Heading heading='Movies' />
-				<SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
+				<SearchBox setSearchValue={setSearchValue}/>
 			</div>
       <div className="row">
         <MoviesList 

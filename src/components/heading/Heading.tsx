@@ -1,4 +1,4 @@
-const Heading = ({heading}) => {
+const Heading = ({heading} :any) => {
     return (
         <div className='col'>
 			<h1>{heading}</h1>

@@ -1,4 +1,4 @@
-const RemoveFavourite = ({ onFavouriteClick }) => {
+const RemoveFavourite = ({ onFavouriteClick }:any) => {
 	return (
 		<div onClick={ onFavouriteClick }>
 			<span className='mr-2'>Remove from favourites</span>

@@ -1,4 +1,4 @@
-    export const fetchData = async (searchValue) => {
+    export const fetchData = async (searchValue: any) => {
         const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=11a308cd`;
         const response = await fetch(url);
         const json = await response.json();
@@ -6,11 +6,11 @@
     }
 
     export const fetchDataFromLocalStorage = () => {
-        const json = localStorage.getItem('react-movies');
+        const json = localStorage.getItem('react-movies') || '{}';
         return JSON.parse(json) || [];
     }
 
-    export const saveToLocalStorage = (items) => {
+    export const saveToLocalStorage = (items : any) => {
         const json = localStorage.setItem('react-movies', JSON.stringify(items));
         return json;
     }

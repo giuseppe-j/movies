@@ -1,10 +1,9 @@
 import {createContext, useReducer} from 'react';
 
-export const FetchContext = createContext();
-
 const INITIAL_STATE = { movies: []};
+export const FetchContext = createContext({state:INITIAL_STATE, dispatch:{}});
 
-const themeReducer = (state, action) => {
+const themeReducer = (state:any, action:any) => {
     switch(action.type) {
         case "LOAD_LIST":
             return { movies: action.payload };
@@ -15,7 +14,7 @@ const themeReducer = (state, action) => {
     }
 };
 
-export const FetchProvider = (props) => {
+export const FetchProvider = (props:any) => {
     const [state, dispatch] = useReducer(themeReducer, INITIAL_STATE);
 
     return (

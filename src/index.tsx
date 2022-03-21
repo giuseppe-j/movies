@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { FetchProvider } from './context/context';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
