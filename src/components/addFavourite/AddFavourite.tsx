@@ -1,4 +1,9 @@
-const AddFavourite = ({ onFavouriteClick }:any) => {
+type Props = {
+    onFavouriteClick: () => void
+};
+
+const AddFavourite = (props: Props) => {
+	const { onFavouriteClick } = props;
 	return (
 		<div onClick={ onFavouriteClick }>
 			<span className='mr-2'>Add to Favourites</span>

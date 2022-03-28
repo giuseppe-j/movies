@@ -2,8 +2,12 @@ import { useContext, useEffect, useState } from 'react';
 import { FetchContext } from '../../context/context';
 import useLazySearch from '../useLazySearch';
 
+type Props = {
+    setSearchValue: (debouncedTerm: string) => void;
+};
 
-const SearchBox = ({setSearchValue}:any) => {
+const SearchBox = (props: Props) => {
+    const {setSearchValue} = props;
     const [searchTerm, setSearchTerm] = useState('');
     const [debouncedTerm] = useLazySearch(searchTerm, 1000);
     const context:any = useContext(FetchContext);

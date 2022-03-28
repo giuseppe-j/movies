@@ -1,4 +1,9 @@
-const RemoveFavourite = ({ onFavouriteClick }:any) => {
+type Props = {
+    onFavouriteClick: () => void
+};
+
+const RemoveFavourite = (props: Props) => {
+	const { onFavouriteClick } = props;
 	return (
 		<div onClick={ onFavouriteClick }>
 			<span className='mr-2'>Remove from favourites</span>

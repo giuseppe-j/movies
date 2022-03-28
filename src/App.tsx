@@ -6,12 +6,13 @@ import Heading from "./components/heading/Heading";
 import SearchBox from "./components/searchBox/searchBox";
 import { FetchContext } from "./context/context";
 import { fetchData, fetchDataFromLocalStorage, saveToLocalStorage } from "./shared";
+import * as Types from "./shared/types";
 
 const App = () => {
   const [searchValue, setSearchValue] = useState<string>('');
-  const [favourites, setFavourites] = useState<any[]>([]);
+  const [favourites, setFavourites] = useState<Types.Movie[]>([]);
 
-  const context:any = useContext(FetchContext);
+  const context: Types.AppContext = useContext(FetchContext);
   const movies = context.state.movies;
 
   useEffect(() => {
@@ -36,9 +37,8 @@ const App = () => {
     fetchFromLocalStorage();
   }, [])
 
-  const addFavouriteMovie = (movie:any) => {
-    // const newFavourites = favourites.filter((favourite:any) => favourite.imdbID === movie.imdbID);
-    const hasMovie = favourites.filter((fav:any) => fav.imdbID === movie.imdbID).length;
+  const addFavouriteMovie = (movie: Types.Movie) => {
+    const hasMovie = favourites.filter((favourite: Types.Movie) => favourite.imdbID === movie.imdbID).length;
     if (!hasMovie) {
       const newFavourites = [...favourites, movie];
       setFavourites(newFavourites);
@@ -46,8 +46,8 @@ const App = () => {
     }
   }
   
-  const removeFavouriteMovie = (movie:any) => {
-    const newFavourites = favourites.filter((favourite:any) => favourite.imdbID !== movie.imdbID);
+  const removeFavouriteMovie = (movie: Types.Movie) => {
+    const newFavourites = favourites.filter((favourite: Types.Movie) => favourite.imdbID !== movie.imdbID);
     setFavourites(newFavourites);
     saveToLocalStorage(newFavourites);
   }
