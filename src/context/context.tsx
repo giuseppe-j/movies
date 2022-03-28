@@ -1,5 +1,5 @@
-import { createContext, Reducer, ReducerAction, useReducer } from "react";
-import { Action, AppContext, Movie, State } from "../shared/types";
+import { createContext, useReducer } from "react";
+import { Action, AppContext, State } from "../shared/types";
 
 const INITIAL_STATE: State = { movies: [] };
 
@@ -8,7 +8,7 @@ export const FetchContext = createContext<AppContext>({
   dispatch: () => {},
 });
 
-const themeReducer: Reducer<any, Action> = (state: State, action: Action) => {
+const themeReducer = (state: State, action: Action) => {
   switch (action.type) {
     case "LOAD_LIST":
       return { movies: action.payload };
