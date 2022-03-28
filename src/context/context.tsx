@@ -19,12 +19,12 @@ const themeReducer: Reducer<any, Action> = (state: State, action: Action) => {
   }
 };
 
-export const FetchProvider = (props: any) => {
+export const FetchProvider: React.FC = ({children}) => {
   const [state, dispatch] = useReducer(themeReducer, INITIAL_STATE);
 
   return (
     <FetchContext.Provider value={{ state, dispatch }}>
-      {props.children}
+      {children}
     </FetchContext.Provider>
   );
 };
