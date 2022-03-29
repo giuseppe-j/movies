@@ -19,5 +19,5 @@ export type AppContext = {
 // export type DispatchPayload = { type: string; payload: string };
 
 export type Action =
-  | { type: "LOAD_LIST"; payload: {} }
+  | { type: "LOAD_LIST"; payload: [] }
   | { type: "CLEAR_LIST" };
