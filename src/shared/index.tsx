@@ -1,7 +1,7 @@
 import * as Types from "./types";
 
 export const fetchData = async (searchValue: string) => {
-  const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=11a308cd`;
+  const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=${process.env.REACT_APP_API_KEY}`;
   const response = await fetch(url);
   const json: Types.JsonData = await response.json();
   return json;
