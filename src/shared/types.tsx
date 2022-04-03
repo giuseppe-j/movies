@@ -11,6 +11,12 @@ export type Movie = {
   imdbID: string;
 };
 
+export type JsonData = {
+  Response: string;
+  Search: Movie[];
+  totalResults: string;
+};
+
 export type AppContext = {
   state: State;
   dispatch: Dispatch<Action>;
@@ -19,5 +25,5 @@ export type AppContext = {
 // export type DispatchPayload = { type: string; payload: string };
 
 export type Action =
-  | { type: "LOAD_LIST"; payload: [] }
+  | { type: "LOAD_LIST"; payload: Movie[] }
   | { type: "CLEAR_LIST" };
